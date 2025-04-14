@@ -6,9 +6,8 @@ export default defineConfig({
   plugins: [
     react(),
     legacy({
-      targets: ['defaults', 'ie >= 11'],
+      targets: ['ie >= 11'],
       // Optionally, include additional polyfills if needed:
-      additionalLegacyPolyfills: ['regenerator-runtime/runtime']
     })
   ]
 });
