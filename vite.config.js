@@ -1,7 +1,14 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react'; // if you're using this plugin for React
+import legacy from '@vitejs/plugin-legacy';
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()]
-})
+  plugins: [
+    react(),
+    legacy({
+      targets: ['defaults', 'ie >= 11'],
+      // Optionally, include additional polyfills if needed:
+      additionalLegacyPolyfills: ['regenerator-runtime/runtime']
+    })
+  ]
+});
