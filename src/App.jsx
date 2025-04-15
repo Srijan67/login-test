@@ -10,8 +10,14 @@ function App() {
 
   // Test API call using fetch
   useEffect(() => {
-    // Replace the URL below with your test endpoint
-    fetch('https://api.github.com')
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('X-Test-Header', 'HelloWorld');  // 👈 custom test header
+  
+    fetch('https://api.github.com', {
+      method: 'GET',
+      headers: headers
+    })
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok: ' + response.status)
@@ -25,6 +31,7 @@ function App() {
         setError(err.message)
       })
   }, [])
+  
 
   return (
     <>
